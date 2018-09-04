@@ -1,0 +1,118 @@
+# CloudmersiveOcrApiClient::PreprocessingApi
+
+All URIs are relative to *https://api.cloudmersive.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**preprocessing_unrotate**](PreprocessingApi.md#preprocessing_unrotate) | **POST** /ocr/preprocessing/image/unrotate | Detect and unrotate a document image
+[**preprocessing_unskew**](PreprocessingApi.md#preprocessing_unskew) | **POST** /ocr/preprocessing/image/unskew | Detect and unskew a photo of a document
+
+
+# **preprocessing_unrotate**
+> Object preprocessing_unrotate(image_file)
+
+Detect and unrotate a document image
+
+Detect and unrotate an image of a document (e.g. that was scanned at an angle).  Great for document scanning applications; once unskewed, this image is perfect for converting to PDF using the Convert API or optical character recognition using the OCR API.
+
+### Example
+```ruby
+# load the gem
+require 'cloudmersive-ocr-api-client'
+# setup authorization
+CloudmersiveOcrApiClient.configure do |config|
+  # Configure API key authorization: Apikey
+  config.api_key['Apikey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Apikey'] = 'Bearer'
+end
+
+api_instance = CloudmersiveOcrApiClient::PreprocessingApi.new
+
+image_file = File.new("/path/to/file.txt") # File | Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+
+
+begin
+  #Detect and unrotate a document image
+  result = api_instance.preprocessing_unrotate(image_file)
+  p result
+rescue CloudmersiveOcrApiClient::ApiError => e
+  puts "Exception when calling PreprocessingApi->preprocessing_unrotate: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_file** | **File**| Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported. | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+
+
+# **preprocessing_unskew**
+> Object preprocessing_unskew(image_file)
+
+Detect and unskew a photo of a document
+
+Detect and unskew a photo of a document (e.g. taken on a cell phone) into a perfectly square image.  Great for document scanning applications; once unskewed, this image is perfect for converting to PDF using the Convert API or optical character recognition using the OCR API.
+
+### Example
+```ruby
+# load the gem
+require 'cloudmersive-ocr-api-client'
+# setup authorization
+CloudmersiveOcrApiClient.configure do |config|
+  # Configure API key authorization: Apikey
+  config.api_key['Apikey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Apikey'] = 'Bearer'
+end
+
+api_instance = CloudmersiveOcrApiClient::PreprocessingApi.new
+
+image_file = File.new("/path/to/file.txt") # File | Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+
+
+begin
+  #Detect and unskew a photo of a document
+  result = api_instance.preprocessing_unskew(image_file)
+  p result
+rescue CloudmersiveOcrApiClient::ApiError => e
+  puts "Exception when calling PreprocessingApi->preprocessing_unskew: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_file** | **File**| Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported. | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+
+
