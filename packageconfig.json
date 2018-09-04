@@ -1,11 +1,11 @@
 ﻿{
 
-  "gemName" : "cloudmersive-nlp-api-client",
+  "gemName" : "cloudmersive-ocr-api-client",
   "gemLicense": "Apache 2.0",
   "gemVersion": "1.2.9",
-  "gemHomepage": "https://www.cloudmersive.com/nlp-api",
-  "gemSummary": "The most powerful and cost-effective NLP AI APIs, continuously updated.",
-  "gemDescription": "The powerful Natural Language Processing APIs let you perform part of speech tagging, entity identification, sentence parsing, and much more to help you understand the meaning of unstructured text.",
+  "gemHomepage": "https://www.cloudmersive.com/ocr-api",
+  "gemSummary": "Convert scanned documents and images to text.",
+  "gemDescription": "Convert scanned images of documents into rich text.",
   "gemAuthor": "Cloudmersive"
   
 }  
