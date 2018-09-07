@@ -17,8 +17,12 @@ require 'cloudmersive-ocr-api-client/version'
 require 'cloudmersive-ocr-api-client/configuration'
 
 # Models
+require 'cloudmersive-ocr-api-client/models/image_to_lines_with_location_result'
 require 'cloudmersive-ocr-api-client/models/image_to_text_response'
+require 'cloudmersive-ocr-api-client/models/image_to_words_with_location_result'
+require 'cloudmersive-ocr-api-client/models/ocr_line_element'
 require 'cloudmersive-ocr-api-client/models/ocr_page_result'
+require 'cloudmersive-ocr-api-client/models/ocr_word_element'
 require 'cloudmersive-ocr-api-client/models/pdf_to_text_response'
 
 # APIs
