@@ -22,8 +22,12 @@ require 'cloudmersive-ocr-api-client/models/image_to_text_response'
 require 'cloudmersive-ocr-api-client/models/image_to_words_with_location_result'
 require 'cloudmersive-ocr-api-client/models/ocr_line_element'
 require 'cloudmersive-ocr-api-client/models/ocr_page_result'
+require 'cloudmersive-ocr-api-client/models/ocr_page_result_with_lines_with_location'
+require 'cloudmersive-ocr-api-client/models/ocr_page_result_with_words_with_location'
 require 'cloudmersive-ocr-api-client/models/ocr_word_element'
+require 'cloudmersive-ocr-api-client/models/pdf_to_lines_with_location_result'
 require 'cloudmersive-ocr-api-client/models/pdf_to_text_response'
+require 'cloudmersive-ocr-api-client/models/pdf_to_words_with_location_result'
 
 # APIs
 require 'cloudmersive-ocr-api-client/api/image_ocr_api'

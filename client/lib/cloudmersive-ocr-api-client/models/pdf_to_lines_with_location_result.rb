@@ -13,19 +13,18 @@ Swagger Codegen version: unset
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # Result of an image to words-with-location OCR operation
-  class ImageToWordsWithLocationResult
+  # Response from an OCR to lines with location operation.  Includes the confience rating and converted text result, along with the locations of the lines in the pages.
+  class PdfToLinesWithLocationResult
     attr_accessor :successful
 
-    # Word elements in the image
-    attr_accessor :words
+    attr_accessor :ocr_pages
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'successful' => :'Successful',
-        :'words' => :'Words'
+        :'ocr_pages' => :'OcrPages'
       }
     end
 
@@ -33,7 +32,7 @@ module CloudmersiveOcrApiClient
     def self.swagger_types
       {
         :'successful' => :'BOOLEAN',
-        :'words' => :'Array<OcrWordElement>'
+        :'ocr_pages' => :'Array<OcrPageResultWithLinesWithLocation>'
       }
     end
 
@@ -49,9 +48,9 @@ module CloudmersiveOcrApiClient
         self.successful = attributes[:'Successful']
       end
 
-      if attributes.has_key?(:'Words')
-        if (value = attributes[:'Words']).is_a?(Array)
-          self.words = value
+      if attributes.has_key?(:'OcrPages')
+        if (value = attributes[:'OcrPages']).is_a?(Array)
+          self.ocr_pages = value
         end
       end
 
@@ -76,7 +75,7 @@ module CloudmersiveOcrApiClient
       return true if self.equal?(o)
       self.class == o.class &&
           successful == o.successful &&
-          words == o.words
+          ocr_pages == o.ocr_pages
     end
 
     # @see the `==` method
@@ -88,7 +87,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, words].hash
+      [successful, ocr_pages].hash
     end
 
     # Builds the object from hash

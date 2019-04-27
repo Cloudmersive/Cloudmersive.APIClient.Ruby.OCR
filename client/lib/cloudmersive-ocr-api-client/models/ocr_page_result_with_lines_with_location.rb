@@ -13,19 +13,23 @@ Swagger Codegen version: unset
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # Result of an image to words-with-location OCR operation
-  class ImageToWordsWithLocationResult
+  # OCR results of a page, including lines of text and their location
+  class OcrPageResultWithLinesWithLocation
     attr_accessor :successful
 
+    # Page number of the page that was OCR-ed, starting with 1 for the first page in the PDF file
+    attr_accessor :page_number
+
     # Word elements in the image
-    attr_accessor :words
+    attr_accessor :lines
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'successful' => :'Successful',
-        :'words' => :'Words'
+        :'page_number' => :'PageNumber',
+        :'lines' => :'Lines'
       }
     end
 
@@ -33,7 +37,8 @@ module CloudmersiveOcrApiClient
     def self.swagger_types
       {
         :'successful' => :'BOOLEAN',
-        :'words' => :'Array<OcrWordElement>'
+        :'page_number' => :'Integer',
+        :'lines' => :'Array<OcrLineElement>'
       }
     end
 
@@ -49,9 +54,13 @@ module CloudmersiveOcrApiClient
         self.successful = attributes[:'Successful']
       end
 
-      if attributes.has_key?(:'Words')
-        if (value = attributes[:'Words']).is_a?(Array)
-          self.words = value
+      if attributes.has_key?(:'PageNumber')
+        self.page_number = attributes[:'PageNumber']
+      end
+
+      if attributes.has_key?(:'Lines')
+        if (value = attributes[:'Lines']).is_a?(Array)
+          self.lines = value
         end
       end
 
@@ -76,7 +85,8 @@ module CloudmersiveOcrApiClient
       return true if self.equal?(o)
       self.class == o.class &&
           successful == o.successful &&
-          words == o.words
+          page_number == o.page_number &&
+          lines == o.lines
     end
 
     # @see the `==` method
@@ -88,7 +98,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, words].hash
+      [successful, page_number, lines].hash
     end
 
     # Builds the object from hash
