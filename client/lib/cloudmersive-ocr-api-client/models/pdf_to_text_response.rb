@@ -13,7 +13,7 @@ Swagger Codegen version: unset
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # Response from an OCR to text operation.  Includes the confience rating and converted text result.
+  # Response from an OCR to text operation.  Includes the confidence rating and converted text result.
   class PdfToTextResponse
     attr_accessor :successful
 
