@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**pdf_ocr_pdf_to_lines_with_location**](PdfOcrApi.md#pdf_ocr_pdf_to_lines_with_location) | **POST** /ocr/pdf/to/lines-with-location | Convert a PDF into text lines with location
 [**pdf_ocr_pdf_to_words_with_location**](PdfOcrApi.md#pdf_ocr_pdf_to_words_with_location) | **POST** /ocr/pdf/to/words-with-location | Convert a PDF into words with location
-[**pdf_ocr_post**](PdfOcrApi.md#pdf_ocr_post) | **POST** /ocr/pdf/toText | Converts an uploaded PDF file in common formats such as JPEG, PNG into text via Optical Character Recognition.
+[**pdf_ocr_post**](PdfOcrApi.md#pdf_ocr_post) | **POST** /ocr/pdf/toText | Converts an uploaded PDF file into text via Optical Character Recognition.
 
 
 # **pdf_ocr_pdf_to_lines_with_location**
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 # **pdf_ocr_post**
 > PdfToTextResponse pdf_ocr_post(image_file, opts)
 
-Converts an uploaded PDF file in common formats such as JPEG, PNG into text via Optical Character Recognition.
+Converts an uploaded PDF file into text via Optical Character Recognition.
 
 ### Example
 ```ruby
@@ -156,7 +156,7 @@ opts = {
 }
 
 begin
-  #Converts an uploaded PDF file in common formats such as JPEG, PNG into text via Optical Character Recognition.
+  #Converts an uploaded PDF file into text via Optical Character Recognition.
   result = api_instance.pdf_ocr_post(image_file, opts)
   p result
 rescue CloudmersiveOcrApiClient::ApiError => e

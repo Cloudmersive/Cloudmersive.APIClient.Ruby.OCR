@@ -4,8 +4,63 @@ All URIs are relative to *https://api.cloudmersive.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**preprocessing_binarize**](PreprocessingApi.md#preprocessing_binarize) | **POST** /ocr/preprocessing/image/binarize | Convert an image of text into a binary (light and dark) view
 [**preprocessing_unrotate**](PreprocessingApi.md#preprocessing_unrotate) | **POST** /ocr/preprocessing/image/unrotate | Detect and unrotate a document image
 [**preprocessing_unskew**](PreprocessingApi.md#preprocessing_unskew) | **POST** /ocr/preprocessing/image/unskew | Detect and unskew a photo of a document
+
+
+# **preprocessing_binarize**
+> Object preprocessing_binarize(image_file)
+
+Convert an image of text into a binary (light and dark) view
+
+Perform an advanced adaptive, machine learning-based binarization algorithm on the input image to prepare it for further OCR operations.
+
+### Example
+```ruby
+# load the gem
+require 'cloudmersive-ocr-api-client'
+# setup authorization
+CloudmersiveOcrApiClient.configure do |config|
+  # Configure API key authorization: Apikey
+  config.api_key['Apikey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Apikey'] = 'Bearer'
+end
+
+api_instance = CloudmersiveOcrApiClient::PreprocessingApi.new
+
+image_file = File.new("/path/to/file.txt") # File | Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+
+
+begin
+  #Convert an image of text into a binary (light and dark) view
+  result = api_instance.preprocessing_binarize(image_file)
+  p result
+rescue CloudmersiveOcrApiClient::ApiError => e
+  puts "Exception when calling PreprocessingApi->preprocessing_binarize: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_file** | **File**| Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported. | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
 
 
 # **preprocessing_unrotate**

@@ -13,28 +13,48 @@ Swagger Codegen version: 2.3.1
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # Response from an OCR to text operation.  Includes the confience rating and converted text result.
-  class ImageToTextResponse
-    # Confidence level rating of the OCR operation; ratings above 80% are strong.
-    attr_accessor :mean_confidence_level
+  # A single text in an OCR document
+  class OcrPhotoTextElement
+    # Text of the word
+    attr_accessor :text
 
-    # Converted text string from the image input.
-    attr_accessor :text_result
+    # X location of the left edge of the word in pixels
+    attr_accessor :x_left
+
+    # Y location of the top edge of the word in pixels
+    attr_accessor :y_top
+
+    # Width of the word in pixels
+    attr_accessor :width
+
+    # Height of the word in pixels
+    attr_accessor :height
+
+    # Confidence level of the machine learning result; possible values are 0.0 (lowest accuracy) - 1.0 (highest accuracy)
+    attr_accessor :confidence_level
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'mean_confidence_level' => :'MeanConfidenceLevel',
-        :'text_result' => :'TextResult'
+        :'text' => :'Text',
+        :'x_left' => :'XLeft',
+        :'y_top' => :'YTop',
+        :'width' => :'Width',
+        :'height' => :'Height',
+        :'confidence_level' => :'ConfidenceLevel'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'mean_confidence_level' => :'Float',
-        :'text_result' => :'String'
+        :'text' => :'String',
+        :'x_left' => :'Integer',
+        :'y_top' => :'Integer',
+        :'width' => :'Integer',
+        :'height' => :'Integer',
+        :'confidence_level' => :'Float'
       }
     end
 
@@ -46,12 +66,28 @@ module CloudmersiveOcrApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'MeanConfidenceLevel')
-        self.mean_confidence_level = attributes[:'MeanConfidenceLevel']
+      if attributes.has_key?(:'Text')
+        self.text = attributes[:'Text']
       end
 
-      if attributes.has_key?(:'TextResult')
-        self.text_result = attributes[:'TextResult']
+      if attributes.has_key?(:'XLeft')
+        self.x_left = attributes[:'XLeft']
+      end
+
+      if attributes.has_key?(:'YTop')
+        self.y_top = attributes[:'YTop']
+      end
+
+      if attributes.has_key?(:'Width')
+        self.width = attributes[:'Width']
+      end
+
+      if attributes.has_key?(:'Height')
+        self.height = attributes[:'Height']
+      end
+
+      if attributes.has_key?(:'ConfidenceLevel')
+        self.confidence_level = attributes[:'ConfidenceLevel']
       end
 
     end
@@ -74,8 +110,12 @@ module CloudmersiveOcrApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          mean_confidence_level == o.mean_confidence_level &&
-          text_result == o.text_result
+          text == o.text &&
+          x_left == o.x_left &&
+          y_top == o.y_top &&
+          width == o.width &&
+          height == o.height &&
+          confidence_level == o.confidence_level
     end
 
     # @see the `==` method
@@ -87,7 +127,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [mean_confidence_level, text_result].hash
+      [text, x_left, y_top, width, height, confidence_level].hash
     end
 
     # Builds the object from hash

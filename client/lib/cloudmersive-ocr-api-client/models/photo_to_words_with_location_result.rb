@@ -13,28 +13,27 @@ Swagger Codegen version: 2.3.1
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # Response from an OCR to text operation.  Includes the confience rating and converted text result.
-  class ImageToTextResponse
-    # Confidence level rating of the OCR operation; ratings above 80% are strong.
-    attr_accessor :mean_confidence_level
+  # Result of an photo to words-with-location OCR operation
+  class PhotoToWordsWithLocationResult
+    attr_accessor :successful
 
-    # Converted text string from the image input.
-    attr_accessor :text_result
+    # Word elements in the image
+    attr_accessor :text_elements
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'mean_confidence_level' => :'MeanConfidenceLevel',
-        :'text_result' => :'TextResult'
+        :'successful' => :'Successful',
+        :'text_elements' => :'TextElements'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'mean_confidence_level' => :'Float',
-        :'text_result' => :'String'
+        :'successful' => :'BOOLEAN',
+        :'text_elements' => :'Array<OcrPhotoTextElement>'
       }
     end
 
@@ -46,12 +45,14 @@ module CloudmersiveOcrApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'MeanConfidenceLevel')
-        self.mean_confidence_level = attributes[:'MeanConfidenceLevel']
+      if attributes.has_key?(:'Successful')
+        self.successful = attributes[:'Successful']
       end
 
-      if attributes.has_key?(:'TextResult')
-        self.text_result = attributes[:'TextResult']
+      if attributes.has_key?(:'TextElements')
+        if (value = attributes[:'TextElements']).is_a?(Array)
+          self.text_elements = value
+        end
       end
 
     end
@@ -74,8 +75,8 @@ module CloudmersiveOcrApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          mean_confidence_level == o.mean_confidence_level &&
-          text_result == o.text_result
+          successful == o.successful &&
+          text_elements == o.text_elements
     end
 
     # @see the `==` method
@@ -87,7 +88,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [mean_confidence_level, text_result].hash
+      [successful, text_elements].hash
     end
 
     # Builds the object from hash
