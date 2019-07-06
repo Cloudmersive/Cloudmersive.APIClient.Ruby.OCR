@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **preprocessing_binarize**
-> Object preprocessing_binarize(image_file)
+> String preprocessing_binarize(image_file)
 
 Convert an image of text into a binarized (light and dark) view
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+**String**
 
 ### Authorization
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 
 # **preprocessing_binarize_advanced**
-> Object preprocessing_binarize_advanced(image_file)
+> String preprocessing_binarize_advanced(image_file)
 
 Convert an image of text into a binary (light and dark) view with ML
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+**String**
 
 ### Authorization
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 
 # **preprocessing_unrotate**
-> Object preprocessing_unrotate(image_file)
+> String preprocessing_unrotate(image_file)
 
 Detect and unrotate a document image
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+**String**
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 
 # **preprocessing_unskew**
-> Object preprocessing_unskew(image_file)
+> String preprocessing_unskew(image_file)
 
 Detect and unskew a photo of a document
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+**String**
 
 ### Authorization
 
