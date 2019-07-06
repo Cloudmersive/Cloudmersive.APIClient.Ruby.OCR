@@ -13,28 +13,28 @@ Swagger Codegen version: unset
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # Response from an OCR to text operation.  Includes the confience rating and converted text result.
-  class ImageToTextResponse
-    # Confidence level rating of the OCR operation; ratings above 80% are strong.
-    attr_accessor :mean_confidence_level
+  # Result of performing a get-page-angle operation
+  class GetPageAngleResult
+    # True if the operation was successful, false otherwise
+    attr_accessor :successful
 
-    # Converted text string from the image input.
-    attr_accessor :text_result
+    # Angle of the page in radians; 0 represents perfectly horizontal
+    attr_accessor :angle
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'mean_confidence_level' => :'MeanConfidenceLevel',
-        :'text_result' => :'TextResult'
+        :'successful' => :'Successful',
+        :'angle' => :'Angle'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'mean_confidence_level' => :'Float',
-        :'text_result' => :'String'
+        :'successful' => :'BOOLEAN',
+        :'angle' => :'Float'
       }
     end
 
@@ -46,12 +46,12 @@ module CloudmersiveOcrApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'MeanConfidenceLevel')
-        self.mean_confidence_level = attributes[:'MeanConfidenceLevel']
+      if attributes.has_key?(:'Successful')
+        self.successful = attributes[:'Successful']
       end
 
-      if attributes.has_key?(:'TextResult')
-        self.text_result = attributes[:'TextResult']
+      if attributes.has_key?(:'Angle')
+        self.angle = attributes[:'Angle']
       end
 
     end
@@ -74,8 +74,8 @@ module CloudmersiveOcrApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          mean_confidence_level == o.mean_confidence_level &&
-          text_result == o.text_result
+          successful == o.successful &&
+          angle == o.angle
     end
 
     # @see the `==` method
@@ -87,7 +87,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [mean_confidence_level, text_result].hash
+      [successful, angle].hash
     end
 
     # Builds the object from hash
