@@ -20,12 +20,16 @@ module CloudmersiveOcrApiClient
     # Word elements in the image
     attr_accessor :text_elements
 
+    # Typically null.  To analyze OCR performance, enable diagnostic mode by adding the HTTP header \"DiagnosticMode\" with the value \"true\".  When this is true, a diagnostic image showing the details of the OCR result will be set in PNG format into DiagnosticImage.
+    attr_accessor :diagnostic_image
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'successful' => :'Successful',
-        :'text_elements' => :'TextElements'
+        :'text_elements' => :'TextElements',
+        :'diagnostic_image' => :'DiagnosticImage'
       }
     end
 
@@ -33,7 +37,8 @@ module CloudmersiveOcrApiClient
     def self.swagger_types
       {
         :'successful' => :'BOOLEAN',
-        :'text_elements' => :'Array<OcrPhotoTextElement>'
+        :'text_elements' => :'Array<OcrPhotoTextElement>',
+        :'diagnostic_image' => :'String'
       }
     end
 
@@ -55,19 +60,39 @@ module CloudmersiveOcrApiClient
         end
       end
 
+      if attributes.has_key?(:'DiagnosticImage')
+        self.diagnostic_image = attributes[:'DiagnosticImage']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@diagnostic_image.nil? && @diagnostic_image !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        invalid_properties.push("invalid value for 'diagnostic_image', must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@diagnostic_image.nil? && @diagnostic_image !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] diagnostic_image Value to be assigned
+    def diagnostic_image=(diagnostic_image)
+
+      if !diagnostic_image.nil? && diagnostic_image !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        fail ArgumentError, "invalid value for 'diagnostic_image', must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/."
+      end
+
+      @diagnostic_image = diagnostic_image
     end
 
     # Checks equality by comparing each attribute.
@@ -76,7 +101,8 @@ module CloudmersiveOcrApiClient
       return true if self.equal?(o)
       self.class == o.class &&
           successful == o.successful &&
-          text_elements == o.text_elements
+          text_elements == o.text_elements &&
+          diagnostic_image == o.diagnostic_image
     end
 
     # @see the `==` method
@@ -88,7 +114,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, text_elements].hash
+      [successful, text_elements, diagnostic_image].hash
     end
 
     # Builds the object from hash
