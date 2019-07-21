@@ -144,6 +144,62 @@ module CloudmersiveOcrApiClient
       return data, status_code, headers
     end
 
+    # Recognize a photo of a business card, extract key business information
+    # Analyzes a photograph of a business card as input, and outputs key business information such as the name of the person, name of the business, the address of the business, the phone number, the email address and more.
+    # @param image_file Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+    # @param [Hash] opts the optional parameters
+    # @return [BusinessCardRecognitionResult]
+    def image_ocr_photo_recognize_business_card(image_file, opts = {})
+      data, _status_code, _headers = image_ocr_photo_recognize_business_card_with_http_info(image_file, opts)
+      return data
+    end
+
+    # Recognize a photo of a business card, extract key business information
+    # Analyzes a photograph of a business card as input, and outputs key business information such as the name of the person, name of the business, the address of the business, the phone number, the email address and more.
+    # @param image_file Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BusinessCardRecognitionResult, Fixnum, Hash)>] BusinessCardRecognitionResult data, response status code and response headers
+    def image_ocr_photo_recognize_business_card_with_http_info(image_file, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: ImageOcrApi.image_ocr_photo_recognize_business_card ..."
+      end
+      # verify the required parameter 'image_file' is set
+      if @api_client.config.client_side_validation && image_file.nil?
+        fail ArgumentError, "Missing the required parameter 'image_file' when calling ImageOcrApi.image_ocr_photo_recognize_business_card"
+      end
+      # resource path
+      local_var_path = "/ocr/photo/recognize/business-card"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["imageFile"] = image_file
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Apikey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'BusinessCardRecognitionResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ImageOcrApi#image_ocr_photo_recognize_business_card\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Recognize a photo of a receipt, extract key business information
     # Analyzes a photograph of a receipt as input, and outputs key business information such as the name of the business, the address of the business, the phone number of the business, the total of the receipt, the date of the receipt, and more.
     # @param image_file Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.

@@ -17,6 +17,7 @@ require 'cloudmersive-ocr-api-client/version'
 require 'cloudmersive-ocr-api-client/configuration'
 
 # Models
+require 'cloudmersive-ocr-api-client/models/business_card_recognition_result'
 require 'cloudmersive-ocr-api-client/models/get_page_angle_result'
 require 'cloudmersive-ocr-api-client/models/image_to_lines_with_location_result'
 require 'cloudmersive-ocr-api-client/models/image_to_text_response'

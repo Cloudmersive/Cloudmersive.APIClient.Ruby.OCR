@@ -60,6 +60,18 @@ describe 'ImageOcrApi' do
     end
   end
 
+  # unit tests for image_ocr_photo_recognize_business_card
+  # Recognize a photo of a business card, extract key business information
+  # Analyzes a photograph of a business card as input, and outputs key business information such as the name of the person, name of the business, the address of the business, the phone number, the email address and more.
+  # @param image_file Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+  # @param [Hash] opts the optional parameters
+  # @return [BusinessCardRecognitionResult]
+  describe 'image_ocr_photo_recognize_business_card test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for image_ocr_photo_recognize_receipt
   # Recognize a photo of a receipt, extract key business information
   # Analyzes a photograph of a receipt as input, and outputs key business information such as the name of the business, the address of the business, the phone number of the business, the total of the receipt, the date of the receipt, and more.
