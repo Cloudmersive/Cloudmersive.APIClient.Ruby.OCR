@@ -31,6 +31,7 @@ require 'cloudmersive-ocr-api-client/models/pdf_to_lines_with_location_result'
 require 'cloudmersive-ocr-api-client/models/pdf_to_text_response'
 require 'cloudmersive-ocr-api-client/models/pdf_to_words_with_location_result'
 require 'cloudmersive-ocr-api-client/models/photo_to_words_with_location_result'
+require 'cloudmersive-ocr-api-client/models/receipt_recognition_result'
 
 # APIs
 require 'cloudmersive-ocr-api-client/api/image_ocr_api'
