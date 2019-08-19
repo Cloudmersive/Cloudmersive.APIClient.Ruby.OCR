@@ -13,50 +13,26 @@ Swagger Codegen version: unset
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # Result of recognizing a receipt, to extract the key information from the receipt
-  class ReceiptRecognitionResult
-    attr_accessor :successful
+  # Receipt line item, comprised of a product or item and a price (if available)
+  class ReceiptLineItem
+    attr_accessor :item_description
 
-    attr_accessor :timestamp
-
-    attr_accessor :business_name
-
-    attr_accessor :business_website
-
-    attr_accessor :address_string
-
-    attr_accessor :phone_number
-
-    attr_accessor :receipt_items
-
-    attr_accessor :receipt_total
+    attr_accessor :item_price
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'successful' => :'Successful',
-        :'timestamp' => :'Timestamp',
-        :'business_name' => :'BusinessName',
-        :'business_website' => :'BusinessWebsite',
-        :'address_string' => :'AddressString',
-        :'phone_number' => :'PhoneNumber',
-        :'receipt_items' => :'ReceiptItems',
-        :'receipt_total' => :'ReceiptTotal'
+        :'item_description' => :'ItemDescription',
+        :'item_price' => :'ItemPrice'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'successful' => :'BOOLEAN',
-        :'timestamp' => :'DateTime',
-        :'business_name' => :'String',
-        :'business_website' => :'String',
-        :'address_string' => :'String',
-        :'phone_number' => :'String',
-        :'receipt_items' => :'Array<ReceiptLineItem>',
-        :'receipt_total' => :'Float'
+        :'item_description' => :'String',
+        :'item_price' => :'Float'
       }
     end
 
@@ -68,38 +44,12 @@ module CloudmersiveOcrApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Successful')
-        self.successful = attributes[:'Successful']
+      if attributes.has_key?(:'ItemDescription')
+        self.item_description = attributes[:'ItemDescription']
       end
 
-      if attributes.has_key?(:'Timestamp')
-        self.timestamp = attributes[:'Timestamp']
-      end
-
-      if attributes.has_key?(:'BusinessName')
-        self.business_name = attributes[:'BusinessName']
-      end
-
-      if attributes.has_key?(:'BusinessWebsite')
-        self.business_website = attributes[:'BusinessWebsite']
-      end
-
-      if attributes.has_key?(:'AddressString')
-        self.address_string = attributes[:'AddressString']
-      end
-
-      if attributes.has_key?(:'PhoneNumber')
-        self.phone_number = attributes[:'PhoneNumber']
-      end
-
-      if attributes.has_key?(:'ReceiptItems')
-        if (value = attributes[:'ReceiptItems']).is_a?(Array)
-          self.receipt_items = value
-        end
-      end
-
-      if attributes.has_key?(:'ReceiptTotal')
-        self.receipt_total = attributes[:'ReceiptTotal']
+      if attributes.has_key?(:'ItemPrice')
+        self.item_price = attributes[:'ItemPrice']
       end
 
     end
@@ -122,14 +72,8 @@ module CloudmersiveOcrApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          successful == o.successful &&
-          timestamp == o.timestamp &&
-          business_name == o.business_name &&
-          business_website == o.business_website &&
-          address_string == o.address_string &&
-          phone_number == o.phone_number &&
-          receipt_items == o.receipt_items &&
-          receipt_total == o.receipt_total
+          item_description == o.item_description &&
+          item_price == o.item_price
     end
 
     # @see the `==` method
@@ -141,7 +85,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, timestamp, business_name, business_website, address_string, phone_number, receipt_items, receipt_total].hash
+      [item_description, item_price].hash
     end
 
     # Builds the object from hash

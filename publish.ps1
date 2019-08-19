@@ -1,1 +1,1 @@
-& gem push .\client\cloudmersive-ocr-api-client-1.3.9.gem
+& gem push .\client\cloudmersive-ocr-api-client-1.4.0.gem

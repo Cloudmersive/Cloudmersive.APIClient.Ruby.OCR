@@ -13,50 +13,70 @@ Swagger Codegen version: unset
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # Result of recognizing a receipt, to extract the key information from the receipt
-  class ReceiptRecognitionResult
-    attr_accessor :successful
+  # Definition of a form field for OCR data extraction from images
+  class FormFieldDefinition
+    attr_accessor :field_id
 
-    attr_accessor :timestamp
+    attr_accessor :left_anchor
 
-    attr_accessor :business_name
+    attr_accessor :top_anchor
 
-    attr_accessor :business_website
+    attr_accessor :anchor_mode
 
-    attr_accessor :address_string
+    attr_accessor :data_type
 
-    attr_accessor :phone_number
+    attr_accessor :target_digit_count
 
-    attr_accessor :receipt_items
+    attr_accessor :minimum_character_count
 
-    attr_accessor :receipt_total
+    attr_accessor :allow_numeric_digits
+
+    attr_accessor :vertical_alignment_type
+
+    attr_accessor :horizontal_alignment_type
+
+    attr_accessor :target_field_width_relative
+
+    attr_accessor :target_field_height_relative
+
+    attr_accessor :ignore
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'successful' => :'Successful',
-        :'timestamp' => :'Timestamp',
-        :'business_name' => :'BusinessName',
-        :'business_website' => :'BusinessWebsite',
-        :'address_string' => :'AddressString',
-        :'phone_number' => :'PhoneNumber',
-        :'receipt_items' => :'ReceiptItems',
-        :'receipt_total' => :'ReceiptTotal'
+        :'field_id' => :'FieldID',
+        :'left_anchor' => :'LeftAnchor',
+        :'top_anchor' => :'TopAnchor',
+        :'anchor_mode' => :'AnchorMode',
+        :'data_type' => :'DataType',
+        :'target_digit_count' => :'TargetDigitCount',
+        :'minimum_character_count' => :'MinimumCharacterCount',
+        :'allow_numeric_digits' => :'AllowNumericDigits',
+        :'vertical_alignment_type' => :'VerticalAlignmentType',
+        :'horizontal_alignment_type' => :'HorizontalAlignmentType',
+        :'target_field_width_relative' => :'TargetFieldWidth_Relative',
+        :'target_field_height_relative' => :'TargetFieldHeight_Relative',
+        :'ignore' => :'Ignore'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'successful' => :'BOOLEAN',
-        :'timestamp' => :'DateTime',
-        :'business_name' => :'String',
-        :'business_website' => :'String',
-        :'address_string' => :'String',
-        :'phone_number' => :'String',
-        :'receipt_items' => :'Array<ReceiptLineItem>',
-        :'receipt_total' => :'Float'
+        :'field_id' => :'String',
+        :'left_anchor' => :'String',
+        :'top_anchor' => :'String',
+        :'anchor_mode' => :'String',
+        :'data_type' => :'String',
+        :'target_digit_count' => :'Integer',
+        :'minimum_character_count' => :'Integer',
+        :'allow_numeric_digits' => :'BOOLEAN',
+        :'vertical_alignment_type' => :'String',
+        :'horizontal_alignment_type' => :'String',
+        :'target_field_width_relative' => :'Float',
+        :'target_field_height_relative' => :'Float',
+        :'ignore' => :'Array<String>'
       }
     end
 
@@ -68,38 +88,58 @@ module CloudmersiveOcrApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Successful')
-        self.successful = attributes[:'Successful']
+      if attributes.has_key?(:'FieldID')
+        self.field_id = attributes[:'FieldID']
       end
 
-      if attributes.has_key?(:'Timestamp')
-        self.timestamp = attributes[:'Timestamp']
+      if attributes.has_key?(:'LeftAnchor')
+        self.left_anchor = attributes[:'LeftAnchor']
       end
 
-      if attributes.has_key?(:'BusinessName')
-        self.business_name = attributes[:'BusinessName']
+      if attributes.has_key?(:'TopAnchor')
+        self.top_anchor = attributes[:'TopAnchor']
       end
 
-      if attributes.has_key?(:'BusinessWebsite')
-        self.business_website = attributes[:'BusinessWebsite']
+      if attributes.has_key?(:'AnchorMode')
+        self.anchor_mode = attributes[:'AnchorMode']
       end
 
-      if attributes.has_key?(:'AddressString')
-        self.address_string = attributes[:'AddressString']
+      if attributes.has_key?(:'DataType')
+        self.data_type = attributes[:'DataType']
       end
 
-      if attributes.has_key?(:'PhoneNumber')
-        self.phone_number = attributes[:'PhoneNumber']
+      if attributes.has_key?(:'TargetDigitCount')
+        self.target_digit_count = attributes[:'TargetDigitCount']
       end
 
-      if attributes.has_key?(:'ReceiptItems')
-        if (value = attributes[:'ReceiptItems']).is_a?(Array)
-          self.receipt_items = value
+      if attributes.has_key?(:'MinimumCharacterCount')
+        self.minimum_character_count = attributes[:'MinimumCharacterCount']
+      end
+
+      if attributes.has_key?(:'AllowNumericDigits')
+        self.allow_numeric_digits = attributes[:'AllowNumericDigits']
+      end
+
+      if attributes.has_key?(:'VerticalAlignmentType')
+        self.vertical_alignment_type = attributes[:'VerticalAlignmentType']
+      end
+
+      if attributes.has_key?(:'HorizontalAlignmentType')
+        self.horizontal_alignment_type = attributes[:'HorizontalAlignmentType']
+      end
+
+      if attributes.has_key?(:'TargetFieldWidth_Relative')
+        self.target_field_width_relative = attributes[:'TargetFieldWidth_Relative']
+      end
+
+      if attributes.has_key?(:'TargetFieldHeight_Relative')
+        self.target_field_height_relative = attributes[:'TargetFieldHeight_Relative']
+      end
+
+      if attributes.has_key?(:'Ignore')
+        if (value = attributes[:'Ignore']).is_a?(Array)
+          self.ignore = value
         end
-      end
-
-      if attributes.has_key?(:'ReceiptTotal')
-        self.receipt_total = attributes[:'ReceiptTotal']
       end
 
     end
@@ -122,14 +162,19 @@ module CloudmersiveOcrApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          successful == o.successful &&
-          timestamp == o.timestamp &&
-          business_name == o.business_name &&
-          business_website == o.business_website &&
-          address_string == o.address_string &&
-          phone_number == o.phone_number &&
-          receipt_items == o.receipt_items &&
-          receipt_total == o.receipt_total
+          field_id == o.field_id &&
+          left_anchor == o.left_anchor &&
+          top_anchor == o.top_anchor &&
+          anchor_mode == o.anchor_mode &&
+          data_type == o.data_type &&
+          target_digit_count == o.target_digit_count &&
+          minimum_character_count == o.minimum_character_count &&
+          allow_numeric_digits == o.allow_numeric_digits &&
+          vertical_alignment_type == o.vertical_alignment_type &&
+          horizontal_alignment_type == o.horizontal_alignment_type &&
+          target_field_width_relative == o.target_field_width_relative &&
+          target_field_height_relative == o.target_field_height_relative &&
+          ignore == o.ignore
     end
 
     # @see the `==` method
@@ -141,7 +186,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, timestamp, business_name, business_website, address_string, phone_number, receipt_items, receipt_total].hash
+      [field_id, left_anchor, top_anchor, anchor_mode, data_type, target_digit_count, minimum_character_count, allow_numeric_digits, vertical_alignment_type, horizontal_alignment_type, target_field_width_relative, target_field_height_relative, ignore].hash
     end
 
     # Builds the object from hash

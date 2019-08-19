@@ -11,5 +11,5 @@ Swagger Codegen version: unset
 =end
 
 module CloudmersiveOcrApiClient
-  VERSION = "1.3.9"
+  VERSION = "1.4.0"
 end

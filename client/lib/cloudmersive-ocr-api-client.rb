@@ -18,6 +18,10 @@ require 'cloudmersive-ocr-api-client/configuration'
 
 # Models
 require 'cloudmersive-ocr-api-client/models/business_card_recognition_result'
+require 'cloudmersive-ocr-api-client/models/field_result'
+require 'cloudmersive-ocr-api-client/models/form_definition_template'
+require 'cloudmersive-ocr-api-client/models/form_field_definition'
+require 'cloudmersive-ocr-api-client/models/form_recognition_result'
 require 'cloudmersive-ocr-api-client/models/get_page_angle_result'
 require 'cloudmersive-ocr-api-client/models/image_to_lines_with_location_result'
 require 'cloudmersive-ocr-api-client/models/image_to_text_response'
@@ -32,6 +36,7 @@ require 'cloudmersive-ocr-api-client/models/pdf_to_lines_with_location_result'
 require 'cloudmersive-ocr-api-client/models/pdf_to_text_response'
 require 'cloudmersive-ocr-api-client/models/pdf_to_words_with_location_result'
 require 'cloudmersive-ocr-api-client/models/photo_to_words_with_location_result'
+require 'cloudmersive-ocr-api-client/models/receipt_line_item'
 require 'cloudmersive-ocr-api-client/models/receipt_recognition_result'
 
 # APIs
