@@ -15,8 +15,10 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Response from an OCR to text operation.  Includes the confidence rating and converted text result.
   class PdfToTextResponse
+    # True if successful, false otherwise
     attr_accessor :successful
 
+    # Page OCR results
     attr_accessor :ocr_pages
 
 

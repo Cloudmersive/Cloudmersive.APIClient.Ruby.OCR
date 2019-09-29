@@ -32,13 +32,13 @@ describe 'OcrPageResultWithWordsWithLocation' do
       expect(@instance).to be_instance_of(CloudmersiveOcrApiClient::OcrPageResultWithWordsWithLocation)
     end
   end
-  describe 'test attribute "successful"' do
+  describe 'test attribute "page_number"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "page_number"' do
+  describe 'test attribute "successful"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

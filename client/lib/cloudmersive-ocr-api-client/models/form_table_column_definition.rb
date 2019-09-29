@@ -13,53 +13,48 @@ Swagger Codegen version: unset
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # A single text in an OCR document
-  class OcrPhotoTextElement
-    # Text of the word
-    attr_accessor :text
+  # Definition of a column within a table for OCR data extraction from images
+  class FormTableColumnDefinition
+    # The identifier of the field; use this to identify which field is being referenced
+    attr_accessor :column_id
 
-    # X location of the left edge of the word in pixels
-    attr_accessor :x_left
+    # Optional - the top anchor of the column heading
+    attr_accessor :top_anchor
 
-    # Y location of the top edge of the word in pixels
-    attr_accessor :y_top
+    # Optional - the matching mode for the anchor.  Possible values are Complete (requires the entire anchor to match) and Partial (allows only part of the anchor to match).  Default is Partial.
+    attr_accessor :anchor_mode
 
-    # Width of the word in pixels
-    attr_accessor :width
+    # The data type of the field; possible values are INTEGER (Integer value), STRING (Arbitrary string value, spaces are permitted), DATE (Date in a structured format), DECIMAL (Decimal number), ALPHANUMERIC (Continuous alphanumeric string with no spaces), STRINGNOWHITESPACE (A string that contains no whitespace characters), SERIALNUMBER (A serial-number style string that contains letters and numbers, and certain symbols; must contain at least one number), ALPHAONLY (Alphabet characters only, no numbers or symbols or whitespace)
+    attr_accessor :data_type
 
-    # Height of the word in pixels
-    attr_accessor :height
+    # Optional - the target number of digits in the field; useful for fixed-length fields
+    attr_accessor :minimum_character_count
 
-    # Points that form the bounding polygon around the text
-    attr_accessor :bounding_points
-
-    # Confidence level of the machine learning result; possible values are 0.0 (lowest accuracy) - 1.0 (highest accuracy)
-    attr_accessor :confidence_level
+    # Optional - set to false to block values that contain numeric digits, set to true to allow numeric digits
+    attr_accessor :allow_numeric_digits
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'text' => :'Text',
-        :'x_left' => :'XLeft',
-        :'y_top' => :'YTop',
-        :'width' => :'Width',
-        :'height' => :'Height',
-        :'bounding_points' => :'BoundingPoints',
-        :'confidence_level' => :'ConfidenceLevel'
+        :'column_id' => :'ColumnID',
+        :'top_anchor' => :'TopAnchor',
+        :'anchor_mode' => :'AnchorMode',
+        :'data_type' => :'DataType',
+        :'minimum_character_count' => :'MinimumCharacterCount',
+        :'allow_numeric_digits' => :'AllowNumericDigits'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'text' => :'String',
-        :'x_left' => :'Integer',
-        :'y_top' => :'Integer',
-        :'width' => :'Integer',
-        :'height' => :'Integer',
-        :'bounding_points' => :'Array<Point>',
-        :'confidence_level' => :'Float'
+        :'column_id' => :'String',
+        :'top_anchor' => :'String',
+        :'anchor_mode' => :'String',
+        :'data_type' => :'String',
+        :'minimum_character_count' => :'Integer',
+        :'allow_numeric_digits' => :'BOOLEAN'
       }
     end
 
@@ -71,34 +66,28 @@ module CloudmersiveOcrApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Text')
-        self.text = attributes[:'Text']
+      if attributes.has_key?(:'ColumnID')
+        self.column_id = attributes[:'ColumnID']
       end
 
-      if attributes.has_key?(:'XLeft')
-        self.x_left = attributes[:'XLeft']
+      if attributes.has_key?(:'TopAnchor')
+        self.top_anchor = attributes[:'TopAnchor']
       end
 
-      if attributes.has_key?(:'YTop')
-        self.y_top = attributes[:'YTop']
+      if attributes.has_key?(:'AnchorMode')
+        self.anchor_mode = attributes[:'AnchorMode']
       end
 
-      if attributes.has_key?(:'Width')
-        self.width = attributes[:'Width']
+      if attributes.has_key?(:'DataType')
+        self.data_type = attributes[:'DataType']
       end
 
-      if attributes.has_key?(:'Height')
-        self.height = attributes[:'Height']
+      if attributes.has_key?(:'MinimumCharacterCount')
+        self.minimum_character_count = attributes[:'MinimumCharacterCount']
       end
 
-      if attributes.has_key?(:'BoundingPoints')
-        if (value = attributes[:'BoundingPoints']).is_a?(Array)
-          self.bounding_points = value
-        end
-      end
-
-      if attributes.has_key?(:'ConfidenceLevel')
-        self.confidence_level = attributes[:'ConfidenceLevel']
+      if attributes.has_key?(:'AllowNumericDigits')
+        self.allow_numeric_digits = attributes[:'AllowNumericDigits']
       end
 
     end
@@ -121,13 +110,12 @@ module CloudmersiveOcrApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          text == o.text &&
-          x_left == o.x_left &&
-          y_top == o.y_top &&
-          width == o.width &&
-          height == o.height &&
-          bounding_points == o.bounding_points &&
-          confidence_level == o.confidence_level
+          column_id == o.column_id &&
+          top_anchor == o.top_anchor &&
+          anchor_mode == o.anchor_mode &&
+          data_type == o.data_type &&
+          minimum_character_count == o.minimum_character_count &&
+          allow_numeric_digits == o.allow_numeric_digits
     end
 
     # @see the `==` method
@@ -139,7 +127,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [text, x_left, y_top, width, height, bounding_points, confidence_level].hash
+      [column_id, top_anchor, anchor_mode, data_type, minimum_character_count, allow_numeric_digits].hash
     end
 
     # Builds the object from hash

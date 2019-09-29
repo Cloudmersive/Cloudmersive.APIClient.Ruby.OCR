@@ -13,53 +13,23 @@ Swagger Codegen version: unset
 require 'date'
 
 module CloudmersiveOcrApiClient
-  # A single text in an OCR document
-  class OcrPhotoTextElement
-    # Text of the word
-    attr_accessor :text
-
-    # X location of the left edge of the word in pixels
-    attr_accessor :x_left
-
-    # Y location of the top edge of the word in pixels
-    attr_accessor :y_top
-
-    # Width of the word in pixels
-    attr_accessor :width
-
-    # Height of the word in pixels
-    attr_accessor :height
-
-    # Points that form the bounding polygon around the text
-    attr_accessor :bounding_points
-
-    # Confidence level of the machine learning result; possible values are 0.0 (lowest accuracy) - 1.0 (highest accuracy)
-    attr_accessor :confidence_level
+  # One row of data in the resulting table
+  class TableRowResult
+    # Table cells in this row result
+    attr_accessor :table_row_cells_result
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'text' => :'Text',
-        :'x_left' => :'XLeft',
-        :'y_top' => :'YTop',
-        :'width' => :'Width',
-        :'height' => :'Height',
-        :'bounding_points' => :'BoundingPoints',
-        :'confidence_level' => :'ConfidenceLevel'
+        :'table_row_cells_result' => :'TableRowCellsResult'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'text' => :'String',
-        :'x_left' => :'Integer',
-        :'y_top' => :'Integer',
-        :'width' => :'Integer',
-        :'height' => :'Integer',
-        :'bounding_points' => :'Array<Point>',
-        :'confidence_level' => :'Float'
+        :'table_row_cells_result' => :'Array<TableCellResult>'
       }
     end
 
@@ -71,34 +41,10 @@ module CloudmersiveOcrApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Text')
-        self.text = attributes[:'Text']
-      end
-
-      if attributes.has_key?(:'XLeft')
-        self.x_left = attributes[:'XLeft']
-      end
-
-      if attributes.has_key?(:'YTop')
-        self.y_top = attributes[:'YTop']
-      end
-
-      if attributes.has_key?(:'Width')
-        self.width = attributes[:'Width']
-      end
-
-      if attributes.has_key?(:'Height')
-        self.height = attributes[:'Height']
-      end
-
-      if attributes.has_key?(:'BoundingPoints')
-        if (value = attributes[:'BoundingPoints']).is_a?(Array)
-          self.bounding_points = value
+      if attributes.has_key?(:'TableRowCellsResult')
+        if (value = attributes[:'TableRowCellsResult']).is_a?(Array)
+          self.table_row_cells_result = value
         end
-      end
-
-      if attributes.has_key?(:'ConfidenceLevel')
-        self.confidence_level = attributes[:'ConfidenceLevel']
       end
 
     end
@@ -121,13 +67,7 @@ module CloudmersiveOcrApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          text == o.text &&
-          x_left == o.x_left &&
-          y_top == o.y_top &&
-          width == o.width &&
-          height == o.height &&
-          bounding_points == o.bounding_points &&
-          confidence_level == o.confidence_level
+          table_row_cells_result == o.table_row_cells_result
     end
 
     # @see the `==` method
@@ -139,7 +79,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [text, x_left, y_top, width, height, bounding_points, confidence_level].hash
+      [table_row_cells_result].hash
     end
 
     # Builds the object from hash

@@ -15,8 +15,10 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Response from an OCR to words with location operation.  Includes the confience rating and converted text result, along with the locations of the words in the pages.
   class PdfToWordsWithLocationResult
+    # True if successful, false otherwise
     attr_accessor :successful
 
+    # OCR page results
     attr_accessor :ocr_pages
 
 

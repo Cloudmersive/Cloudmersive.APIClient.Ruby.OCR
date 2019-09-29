@@ -15,20 +15,28 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Result of recognizing a business card, to extract the key information from the business card
   class BusinessCardRecognitionResult
+    # True if the operation was successful, false otherwise
     attr_accessor :successful
 
+    # The name of the person printed on the business card (if included on the business card)
     attr_accessor :person_name
 
+    # The title of the person printed on the business card (if included on the business card)
     attr_accessor :person_title
 
+    # The name of the business printed on the business card (if included on the business card)
     attr_accessor :business_name
 
+    # The address printed on the business card (if included on the business card)
     attr_accessor :address_string
 
+    # The phone number printed on the business card (if included on the business card)
     attr_accessor :phone_number
 
+    # The email address printed on the business card (if included on the business card)
     attr_accessor :email_address
 
+    # The date and time printed on the business card (if included on the business card)
     attr_accessor :timestamp
 
 

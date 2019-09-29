@@ -3,18 +3,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**field_id** | **String** |  | [optional] 
-**left_anchor** | **String** |  | [optional] 
-**top_anchor** | **String** |  | [optional] 
-**anchor_mode** | **String** |  | [optional] 
-**data_type** | **String** |  | [optional] 
-**target_digit_count** | **Integer** |  | [optional] 
-**minimum_character_count** | **Integer** |  | [optional] 
-**allow_numeric_digits** | **BOOLEAN** |  | [optional] 
-**vertical_alignment_type** | **String** |  | [optional] 
-**horizontal_alignment_type** | **String** |  | [optional] 
-**target_field_width_relative** | **Float** |  | [optional] 
-**target_field_height_relative** | **Float** |  | [optional] 
-**ignore** | **Array&lt;String&gt;** |  | [optional] 
+**field_id** | **String** | The identifier of the field; use this to identify which field is being referenced | [optional] 
+**left_anchor** | **String** | Optional - the left-hand anchor of the field | [optional] 
+**top_anchor** | **String** | Optional - the top anchor of the field | [optional] 
+**anchor_mode** | **String** | Optional - the matching mode for the anchor.  Possible values are Complete (requires the entire anchor to match) and Partial (allows only part of the anchor to match).  Default is Partial. | [optional] 
+**data_type** | **String** | The data type of the field; possible values are INTEGER (Integer value), STRING (Arbitrary string value, spaces are permitted), DATE (Date in a structured format), DECIMAL (Decimal number), ALPHANUMERIC (Continuous alphanumeric string with no spaces), STRINGNOWHITESPACE (A string that contains no whitespace characters), SERIALNUMBER (A serial-number style string that contains letters and numbers, and certain symbols; must contain at least one number), ALPHAONLY (Alphabet characters only, no numbers or symbols or whitespace) | [optional] 
+**target_digit_count** | **Integer** | Optional - the target number of digits in the field; useful for fixed-length fields | [optional] 
+**minimum_character_count** | **Integer** | Optional - the target number of digits in the field; useful for fixed-length fields | [optional] 
+**allow_numeric_digits** | **BOOLEAN** | Optional - set to false to block values that contain numeric digits, set to true to allow numeric digits | [optional] 
+**vertical_alignment_type** | **String** | Vertical alignment of target value area relative to the field anchor; Possible values are VCenter, Top, Bottom | [optional] 
+**horizontal_alignment_type** | **String** | Horizontal alignment of target value area relative to the field anchor; Possible values are Left, Right | [optional] 
+**target_field_width_relative** | **Float** | Optional - scale factor for target field width - relative to width of field title; a value of 1.0 indicates the target value area has the same width as the field value as occurring in the image; a value of 2.0 would indicate that the target value area has 2 times the width of the field value as occurring in the image. | [optional] 
+**target_field_height_relative** | **Float** | Optional - scale factor for target field height - relative to height of field title | [optional] 
+**ignore** | **Array&lt;String&gt;** | Optional - Ignore any result items that contain a partial or complete match with these text strings | [optional] 
 
 

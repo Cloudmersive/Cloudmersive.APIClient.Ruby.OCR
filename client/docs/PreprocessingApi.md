@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**preprocessing_binarize_advanced**](PreprocessingApi.md#preprocessing_binarize_advanced) | **POST** /ocr/preprocessing/image/binarize/advanced | Convert an image of text into a binary (light and dark) view with ML
 [**preprocessing_get_page_angle**](PreprocessingApi.md#preprocessing_get_page_angle) | **POST** /ocr/preprocessing/image/get-page-angle | Get the angle of the page / document / receipt
 [**preprocessing_unrotate**](PreprocessingApi.md#preprocessing_unrotate) | **POST** /ocr/preprocessing/image/unrotate | Detect and unrotate a document image
+[**preprocessing_unrotate_advanced**](PreprocessingApi.md#preprocessing_unrotate_advanced) | **POST** /ocr/preprocessing/image/unrotate/advanced | Detect and unrotate a document image (advanced)
 [**preprocessing_unskew**](PreprocessingApi.md#preprocessing_unskew) | **POST** /ocr/preprocessing/image/unskew | Detect and unskew a photo of a document
 
 
@@ -203,6 +204,60 @@ begin
   p result
 rescue CloudmersiveOcrApiClient::ApiError => e
   puts "Exception when calling PreprocessingApi->preprocessing_unrotate: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_file** | **File**| Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported. | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+
+
+# **preprocessing_unrotate_advanced**
+> String preprocessing_unrotate_advanced(image_file)
+
+Detect and unrotate a document image (advanced)
+
+Detect and unrotate an image of a document (e.g. that was scanned at an angle) using deep learning.  Great for document scanning applications; once unskewed, this image is perfect for converting to PDF using the Convert API or optical character recognition using the OCR API.
+
+### Example
+```ruby
+# load the gem
+require 'cloudmersive-ocr-api-client'
+# setup authorization
+CloudmersiveOcrApiClient.configure do |config|
+  # Configure API key authorization: Apikey
+  config.api_key['Apikey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Apikey'] = 'Bearer'
+end
+
+api_instance = CloudmersiveOcrApiClient::PreprocessingApi.new
+
+image_file = File.new("/path/to/file.txt") # File | Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+
+
+begin
+  #Detect and unrotate a document image (advanced)
+  result = api_instance.preprocessing_unrotate_advanced(image_file)
+  p result
+rescue CloudmersiveOcrApiClient::ApiError => e
+  puts "Exception when calling PreprocessingApi->preprocessing_unrotate_advanced: #{e}"
 end
 ```
 

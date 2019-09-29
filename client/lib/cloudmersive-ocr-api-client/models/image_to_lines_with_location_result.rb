@@ -15,6 +15,7 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Result of an image to lines-with-location OCR operation
   class ImageToLinesWithLocationResult
+    # True if successful, false otherwise
     attr_accessor :successful
 
     # Words in the image

@@ -15,8 +15,10 @@ require 'date'
 module CloudmersiveOcrApiClient
   # A pairing target field and actual value read from form
   class FieldResult
+    # Target field to extract from the form
     attr_accessor :target_field
 
+    # Result field value(s) extracted
     attr_accessor :field_values
 
 

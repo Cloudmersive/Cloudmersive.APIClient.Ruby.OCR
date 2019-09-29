@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**successful** | **BOOLEAN** |  | [optional] 
-**field_value_extraction_result** | [**Array&lt;FieldResult&gt;**](FieldResult.md) |  | [optional] 
+**successful** | **BOOLEAN** | True if the operation was successful, false otherwise | [optional] 
+**field_value_extraction_result** | [**Array&lt;FieldResult&gt;**](FieldResult.md) | Result of form field OCR data extraction | [optional] 
+**table_value_extraction_results** | [**Array&lt;TableResult&gt;**](TableResult.md) | Result of form table OCR data extraction | [optional] 
 
 

@@ -15,10 +15,11 @@ require 'date'
 module CloudmersiveOcrApiClient
   # OCR results of a page, including lines of text and their location
   class OcrPageResultWithLinesWithLocation
-    attr_accessor :successful
-
     # Page number of the page that was OCR-ed, starting with 1 for the first page in the PDF file
     attr_accessor :page_number
+
+    # True if successful, false otherwise
+    attr_accessor :successful
 
     # Word elements in the image
     attr_accessor :lines
@@ -27,8 +28,8 @@ module CloudmersiveOcrApiClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'successful' => :'Successful',
         :'page_number' => :'PageNumber',
+        :'successful' => :'Successful',
         :'lines' => :'Lines'
       }
     end
@@ -36,8 +37,8 @@ module CloudmersiveOcrApiClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'successful' => :'BOOLEAN',
         :'page_number' => :'Integer',
+        :'successful' => :'BOOLEAN',
         :'lines' => :'Array<OcrLineElement>'
       }
     end
@@ -50,12 +51,12 @@ module CloudmersiveOcrApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Successful')
-        self.successful = attributes[:'Successful']
-      end
-
       if attributes.has_key?(:'PageNumber')
         self.page_number = attributes[:'PageNumber']
+      end
+
+      if attributes.has_key?(:'Successful')
+        self.successful = attributes[:'Successful']
       end
 
       if attributes.has_key?(:'Lines')
@@ -84,8 +85,8 @@ module CloudmersiveOcrApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          successful == o.successful &&
           page_number == o.page_number &&
+          successful == o.successful &&
           lines == o.lines
     end
 
@@ -98,7 +99,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, page_number, lines].hash
+      [page_number, successful, lines].hash
     end
 
     # Builds the object from hash

@@ -15,20 +15,28 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Result of recognizing a receipt, to extract the key information from the receipt
   class ReceiptRecognitionResult
+    # True if the operation was successful, false otherwise
     attr_accessor :successful
 
+    # The date and time printed on the receipt (if included on the receipt)
     attr_accessor :timestamp
 
+    # The name of the business printed on the receipt (if included on the receipt)
     attr_accessor :business_name
 
+    # The website URL of the business printed on the receipt (if included on the receipt)
     attr_accessor :business_website
 
+    # The address of the business printed on the receipt (if included on the receipt)
     attr_accessor :address_string
 
+    # The phone number printed on the receipt (if included on the receipt)
     attr_accessor :phone_number
 
+    # The individual line items comprising the order; does not include total (see ReceiptTotal)
     attr_accessor :receipt_items
 
+    # The total monetary value of the receipt (if included on the receipt)
     attr_accessor :receipt_total
 
 

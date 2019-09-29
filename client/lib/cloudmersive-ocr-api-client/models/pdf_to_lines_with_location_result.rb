@@ -15,8 +15,10 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Response from an OCR to lines with location operation.  Includes the confience rating and converted text result, along with the locations of the lines in the pages.
   class PdfToLinesWithLocationResult
+    # True if successful, false otherwise
     attr_accessor :successful
 
+    # OCR results for each page
     attr_accessor :ocr_pages
 
 

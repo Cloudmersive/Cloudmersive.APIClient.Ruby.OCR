@@ -15,30 +15,43 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Definition of a form field for OCR data extraction from images
   class FormFieldDefinition
+    # The identifier of the field; use this to identify which field is being referenced
     attr_accessor :field_id
 
+    # Optional - the left-hand anchor of the field
     attr_accessor :left_anchor
 
+    # Optional - the top anchor of the field
     attr_accessor :top_anchor
 
+    # Optional - the matching mode for the anchor.  Possible values are Complete (requires the entire anchor to match) and Partial (allows only part of the anchor to match).  Default is Partial.
     attr_accessor :anchor_mode
 
+    # The data type of the field; possible values are INTEGER (Integer value), STRING (Arbitrary string value, spaces are permitted), DATE (Date in a structured format), DECIMAL (Decimal number), ALPHANUMERIC (Continuous alphanumeric string with no spaces), STRINGNOWHITESPACE (A string that contains no whitespace characters), SERIALNUMBER (A serial-number style string that contains letters and numbers, and certain symbols; must contain at least one number), ALPHAONLY (Alphabet characters only, no numbers or symbols or whitespace)
     attr_accessor :data_type
 
+    # Optional - the target number of digits in the field; useful for fixed-length fields
     attr_accessor :target_digit_count
 
+    # Optional - the target number of digits in the field; useful for fixed-length fields
     attr_accessor :minimum_character_count
 
+    # Optional - set to false to block values that contain numeric digits, set to true to allow numeric digits
     attr_accessor :allow_numeric_digits
 
+    # Vertical alignment of target value area relative to the field anchor; Possible values are VCenter, Top, Bottom
     attr_accessor :vertical_alignment_type
 
+    # Horizontal alignment of target value area relative to the field anchor; Possible values are Left, Right
     attr_accessor :horizontal_alignment_type
 
+    # Optional - scale factor for target field width - relative to width of field title; a value of 1.0 indicates the target value area has the same width as the field value as occurring in the image; a value of 2.0 would indicate that the target value area has 2 times the width of the field value as occurring in the image.
     attr_accessor :target_field_width_relative
 
+    # Optional - scale factor for target field height - relative to height of field title
     attr_accessor :target_field_height_relative
 
+    # Optional - Ignore any result items that contain a partial or complete match with these text strings
     attr_accessor :ignore
 
 

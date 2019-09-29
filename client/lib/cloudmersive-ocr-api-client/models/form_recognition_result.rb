@@ -15,16 +15,22 @@ require 'date'
 module CloudmersiveOcrApiClient
   # The result of extracting form field values
   class FormRecognitionResult
+    # True if the operation was successful, false otherwise
     attr_accessor :successful
 
+    # Result of form field OCR data extraction
     attr_accessor :field_value_extraction_result
+
+    # Result of form table OCR data extraction
+    attr_accessor :table_value_extraction_results
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'successful' => :'Successful',
-        :'field_value_extraction_result' => :'FieldValueExtractionResult'
+        :'field_value_extraction_result' => :'FieldValueExtractionResult',
+        :'table_value_extraction_results' => :'TableValueExtractionResults'
       }
     end
 
@@ -32,7 +38,8 @@ module CloudmersiveOcrApiClient
     def self.swagger_types
       {
         :'successful' => :'BOOLEAN',
-        :'field_value_extraction_result' => :'Array<FieldResult>'
+        :'field_value_extraction_result' => :'Array<FieldResult>',
+        :'table_value_extraction_results' => :'Array<TableResult>'
       }
     end
 
@@ -51,6 +58,12 @@ module CloudmersiveOcrApiClient
       if attributes.has_key?(:'FieldValueExtractionResult')
         if (value = attributes[:'FieldValueExtractionResult']).is_a?(Array)
           self.field_value_extraction_result = value
+        end
+      end
+
+      if attributes.has_key?(:'TableValueExtractionResults')
+        if (value = attributes[:'TableValueExtractionResults']).is_a?(Array)
+          self.table_value_extraction_results = value
         end
       end
 
@@ -75,7 +88,8 @@ module CloudmersiveOcrApiClient
       return true if self.equal?(o)
       self.class == o.class &&
           successful == o.successful &&
-          field_value_extraction_result == o.field_value_extraction_result
+          field_value_extraction_result == o.field_value_extraction_result &&
+          table_value_extraction_results == o.table_value_extraction_results
     end
 
     # @see the `==` method
@@ -87,7 +101,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, field_value_extraction_result].hash
+      [successful, field_value_extraction_result, table_value_extraction_results].hash
     end
 
     # Builds the object from hash

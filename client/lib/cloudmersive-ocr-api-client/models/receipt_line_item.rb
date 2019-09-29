@@ -15,8 +15,10 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Receipt line item, comprised of a product or item and a price (if available)
   class ReceiptLineItem
+    # Description of the item
     attr_accessor :item_description
 
+    # Price of the item if available
     attr_accessor :item_price
 
 

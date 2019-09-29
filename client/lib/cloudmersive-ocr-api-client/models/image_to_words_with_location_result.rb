@@ -15,6 +15,7 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Result of an image to words-with-location OCR operation
   class ImageToWordsWithLocationResult
+    # True if successful, false otherwise
     attr_accessor :successful
 
     # Word elements in the image

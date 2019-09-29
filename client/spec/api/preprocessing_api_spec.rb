@@ -80,6 +80,18 @@ describe 'PreprocessingApi' do
     end
   end
 
+  # unit tests for preprocessing_unrotate_advanced
+  # Detect and unrotate a document image (advanced)
+  # Detect and unrotate an image of a document (e.g. that was scanned at an angle) using deep learning.  Great for document scanning applications; once unskewed, this image is perfect for converting to PDF using the Convert API or optical character recognition using the OCR API.
+  # @param image_file Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'preprocessing_unrotate_advanced test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for preprocessing_unskew
   # Detect and unskew a photo of a document
   # Detect and unskew a photo of a document (e.g. taken on a cell phone) into a perfectly square image.  Great for document scanning applications; once unskewed, this image is perfect for converting to PDF using the Convert API or optical character recognition using the OCR API.

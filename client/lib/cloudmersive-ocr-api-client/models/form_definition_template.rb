@@ -15,20 +15,26 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Definition of a form template; use a form template definition to recognize the fields in a form with Cloudmersive OCR
   class FormDefinitionTemplate
+    # Field definitions in the template; a field is comprised of a key/value pair
     attr_accessor :field_definitions
+
+    # Table definitions in the template; a table is comprised of columns and rows and exists in a 2-dimensional layout; a common example of a table would be an invoice
+    attr_accessor :table_definitions
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'field_definitions' => :'FieldDefinitions'
+        :'field_definitions' => :'FieldDefinitions',
+        :'table_definitions' => :'TableDefinitions'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'field_definitions' => :'Array<FormFieldDefinition>'
+        :'field_definitions' => :'Array<FormFieldDefinition>',
+        :'table_definitions' => :'Array<FormTableDefinition>'
       }
     end
 
@@ -43,6 +49,12 @@ module CloudmersiveOcrApiClient
       if attributes.has_key?(:'FieldDefinitions')
         if (value = attributes[:'FieldDefinitions']).is_a?(Array)
           self.field_definitions = value
+        end
+      end
+
+      if attributes.has_key?(:'TableDefinitions')
+        if (value = attributes[:'TableDefinitions']).is_a?(Array)
+          self.table_definitions = value
         end
       end
 
@@ -66,7 +78,8 @@ module CloudmersiveOcrApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          field_definitions == o.field_definitions
+          field_definitions == o.field_definitions &&
+          table_definitions == o.table_definitions
     end
 
     # @see the `==` method
@@ -78,7 +91,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [field_definitions].hash
+      [field_definitions, table_definitions].hash
     end
 
     # Builds the object from hash
