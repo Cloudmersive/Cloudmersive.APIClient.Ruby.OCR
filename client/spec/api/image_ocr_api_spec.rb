@@ -88,6 +88,22 @@ describe 'ImageOcrApi' do
     end
   end
 
+  # unit tests for image_ocr_photo_recognize_form_advanced
+  # Recognize a photo of a form, extract key fields using stored templates
+  # Analyzes a photograph of a form as input, and outputs key business fields and information.  Customzie data to be extracted by defining fields for the form.  Uses template definitions stored in Cloudmersive Configuration; to configure stored templates in a configuration bucket, log into Cloudmersive Management Portal and navigate to Settings &amp;gt; API Configuration &amp;gt; Create Bucket
+  # @param image_file Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :bucket_id Bucket ID of the Configuration Bucket storing the form templates
+  # @option opts [String] :bucket_secret_key Bucket Secret Key of the Configuration Bucket storing the form templates
+  # @option opts [String] :recognition_mode Optional, enable advanced recognition mode by specifying &#39;Advanced&#39;, enable handwriting recognition by specifying &#39;EnableHandwriting&#39;.  Default is disabled.
+  # @option opts [String] :preprocessing Optional, preprocessing mode, default is &#39;Auto&#39;.  Possible values are None (no preprocessing of the image), and Auto (automatic image enhancement of the image - including automatic unrotation of the image - before OCR is applied; this is recommended).  Set this to &#39;None&#39; if you do not want to use automatic image unrotation and enhancement.
+  # @return [FormRecognitionResult]
+  describe 'image_ocr_photo_recognize_form_advanced test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for image_ocr_photo_recognize_receipt
   # Recognize a photo of a receipt, extract key business information
   # Analyzes a photograph of a receipt as input, and outputs key business information such as the name of the business, the address of the business, the phone number of the business, the total of the receipt, the date of the receipt, and more.

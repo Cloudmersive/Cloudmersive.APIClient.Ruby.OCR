@@ -268,6 +268,74 @@ module CloudmersiveOcrApiClient
       return data, status_code, headers
     end
 
+    # Recognize a photo of a form, extract key fields using stored templates
+    # Analyzes a photograph of a form as input, and outputs key business fields and information.  Customzie data to be extracted by defining fields for the form.  Uses template definitions stored in Cloudmersive Configuration; to configure stored templates in a configuration bucket, log into Cloudmersive Management Portal and navigate to Settings &gt; API Configuration &gt; Create Bucket
+    # @param image_file Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :bucket_id Bucket ID of the Configuration Bucket storing the form templates
+    # @option opts [String] :bucket_secret_key Bucket Secret Key of the Configuration Bucket storing the form templates
+    # @option opts [String] :recognition_mode Optional, enable advanced recognition mode by specifying &#39;Advanced&#39;, enable handwriting recognition by specifying &#39;EnableHandwriting&#39;.  Default is disabled.
+    # @option opts [String] :preprocessing Optional, preprocessing mode, default is &#39;Auto&#39;.  Possible values are None (no preprocessing of the image), and Auto (automatic image enhancement of the image - including automatic unrotation of the image - before OCR is applied; this is recommended).  Set this to &#39;None&#39; if you do not want to use automatic image unrotation and enhancement.
+    # @return [FormRecognitionResult]
+    def image_ocr_photo_recognize_form_advanced(image_file, opts = {})
+      data, _status_code, _headers = image_ocr_photo_recognize_form_advanced_with_http_info(image_file, opts)
+      return data
+    end
+
+    # Recognize a photo of a form, extract key fields using stored templates
+    # Analyzes a photograph of a form as input, and outputs key business fields and information.  Customzie data to be extracted by defining fields for the form.  Uses template definitions stored in Cloudmersive Configuration; to configure stored templates in a configuration bucket, log into Cloudmersive Management Portal and navigate to Settings &amp;gt; API Configuration &amp;gt; Create Bucket
+    # @param image_file Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :bucket_id Bucket ID of the Configuration Bucket storing the form templates
+    # @option opts [String] :bucket_secret_key Bucket Secret Key of the Configuration Bucket storing the form templates
+    # @option opts [String] :recognition_mode Optional, enable advanced recognition mode by specifying &#39;Advanced&#39;, enable handwriting recognition by specifying &#39;EnableHandwriting&#39;.  Default is disabled.
+    # @option opts [String] :preprocessing Optional, preprocessing mode, default is &#39;Auto&#39;.  Possible values are None (no preprocessing of the image), and Auto (automatic image enhancement of the image - including automatic unrotation of the image - before OCR is applied; this is recommended).  Set this to &#39;None&#39; if you do not want to use automatic image unrotation and enhancement.
+    # @return [Array<(FormRecognitionResult, Fixnum, Hash)>] FormRecognitionResult data, response status code and response headers
+    def image_ocr_photo_recognize_form_advanced_with_http_info(image_file, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: ImageOcrApi.image_ocr_photo_recognize_form_advanced ..."
+      end
+      # verify the required parameter 'image_file' is set
+      if @api_client.config.client_side_validation && image_file.nil?
+        fail ArgumentError, "Missing the required parameter 'image_file' when calling ImageOcrApi.image_ocr_photo_recognize_form_advanced"
+      end
+      # resource path
+      local_var_path = "/ocr/photo/recognize/form/advanced"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params[:'bucketID'] = opts[:'bucket_id'] if !opts[:'bucket_id'].nil?
+      header_params[:'bucketSecretKey'] = opts[:'bucket_secret_key'] if !opts[:'bucket_secret_key'].nil?
+      header_params[:'recognitionMode'] = opts[:'recognition_mode'] if !opts[:'recognition_mode'].nil?
+      header_params[:'preprocessing'] = opts[:'preprocessing'] if !opts[:'preprocessing'].nil?
+
+      # form parameters
+      form_params = {}
+      form_params["imageFile"] = image_file
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Apikey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FormRecognitionResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ImageOcrApi#image_ocr_photo_recognize_form_advanced\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Recognize a photo of a receipt, extract key business information
     # Analyzes a photograph of a receipt as input, and outputs key business information such as the name of the business, the address of the business, the phone number of the business, the total of the receipt, the date of the receipt, and more.
     # @param image_file Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
