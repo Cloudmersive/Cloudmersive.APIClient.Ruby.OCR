@@ -24,7 +24,7 @@ module CloudmersiveOcrApiClient
     # Optional - the top anchor of the field
     attr_accessor :top_anchor
 
-    # Optional - the matching mode for the anchor.  Possible values are Complete (requires the entire anchor to match) and Partial (allows only part of the anchor to match).  Default is Partial.
+    # Optional - the matching mode for the anchor.  Possible values are Complete (requires the entire anchor to match) and Partial (allows only part of the anchor to match) and Horizontal (anchor must be laid out horizontally).  Default is Partial.
     attr_accessor :anchor_mode
 
     # The data type of the field; possible values are INTEGER (Integer value), STRING (Arbitrary string value, spaces are permitted), DATE (Date in a structured format), DECIMAL (Decimal number), ALPHANUMERIC (Continuous alphanumeric string with no spaces), STRINGNOWHITESPACE (A string that contains no whitespace characters), SERIALNUMBER (A serial-number style string that contains letters and numbers, and certain symbols; must contain at least one number), ALPHAONLY (Alphabet characters only, no numbers or symbols or whitespace)
@@ -51,6 +51,12 @@ module CloudmersiveOcrApiClient
     # Optional - scale factor for target field height - relative to height of field title
     attr_accessor :target_field_height_relative
 
+    # Optional - horizontal adjestment in relative width of the field
+    attr_accessor :target_field_horizontal_adjustment
+
+    # Optional - vertical adjestment in relative height of the field
+    attr_accessor :target_field_vertical_adjustment
+
     # Optional - Ignore any result items that contain a partial or complete match with these text strings
     attr_accessor :ignore
 
@@ -70,6 +76,8 @@ module CloudmersiveOcrApiClient
         :'horizontal_alignment_type' => :'HorizontalAlignmentType',
         :'target_field_width_relative' => :'TargetFieldWidth_Relative',
         :'target_field_height_relative' => :'TargetFieldHeight_Relative',
+        :'target_field_horizontal_adjustment' => :'TargetFieldHorizontalAdjustment',
+        :'target_field_vertical_adjustment' => :'TargetFieldVerticalAdjustment',
         :'ignore' => :'Ignore'
       }
     end
@@ -89,6 +97,8 @@ module CloudmersiveOcrApiClient
         :'horizontal_alignment_type' => :'String',
         :'target_field_width_relative' => :'Float',
         :'target_field_height_relative' => :'Float',
+        :'target_field_horizontal_adjustment' => :'Float',
+        :'target_field_vertical_adjustment' => :'Float',
         :'ignore' => :'Array<String>'
       }
     end
@@ -149,6 +159,14 @@ module CloudmersiveOcrApiClient
         self.target_field_height_relative = attributes[:'TargetFieldHeight_Relative']
       end
 
+      if attributes.has_key?(:'TargetFieldHorizontalAdjustment')
+        self.target_field_horizontal_adjustment = attributes[:'TargetFieldHorizontalAdjustment']
+      end
+
+      if attributes.has_key?(:'TargetFieldVerticalAdjustment')
+        self.target_field_vertical_adjustment = attributes[:'TargetFieldVerticalAdjustment']
+      end
+
       if attributes.has_key?(:'Ignore')
         if (value = attributes[:'Ignore']).is_a?(Array)
           self.ignore = value
@@ -187,6 +205,8 @@ module CloudmersiveOcrApiClient
           horizontal_alignment_type == o.horizontal_alignment_type &&
           target_field_width_relative == o.target_field_width_relative &&
           target_field_height_relative == o.target_field_height_relative &&
+          target_field_horizontal_adjustment == o.target_field_horizontal_adjustment &&
+          target_field_vertical_adjustment == o.target_field_vertical_adjustment &&
           ignore == o.ignore
     end
 
@@ -199,7 +219,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [field_id, left_anchor, top_anchor, anchor_mode, data_type, target_digit_count, minimum_character_count, allow_numeric_digits, vertical_alignment_type, horizontal_alignment_type, target_field_width_relative, target_field_height_relative, ignore].hash
+      [field_id, left_anchor, top_anchor, anchor_mode, data_type, target_digit_count, minimum_character_count, allow_numeric_digits, vertical_alignment_type, horizontal_alignment_type, target_field_width_relative, target_field_height_relative, target_field_horizontal_adjustment, target_field_vertical_adjustment, ignore].hash
     end
 
     # Builds the object from hash

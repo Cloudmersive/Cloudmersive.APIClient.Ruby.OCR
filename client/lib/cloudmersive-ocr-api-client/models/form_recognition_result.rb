@@ -24,13 +24,17 @@ module CloudmersiveOcrApiClient
     # Result of form table OCR data extraction
     attr_accessor :table_value_extraction_results
 
+    # Diagnostic images - default is null, enable diagnostics=true to populate this parameter with one image per field
+    attr_accessor :diagnostics
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'successful' => :'Successful',
         :'field_value_extraction_result' => :'FieldValueExtractionResult',
-        :'table_value_extraction_results' => :'TableValueExtractionResults'
+        :'table_value_extraction_results' => :'TableValueExtractionResults',
+        :'diagnostics' => :'Diagnostics'
       }
     end
 
@@ -39,7 +43,8 @@ module CloudmersiveOcrApiClient
       {
         :'successful' => :'BOOLEAN',
         :'field_value_extraction_result' => :'Array<FieldResult>',
-        :'table_value_extraction_results' => :'Array<TableResult>'
+        :'table_value_extraction_results' => :'Array<TableResult>',
+        :'diagnostics' => :'Array<String>'
       }
     end
 
@@ -67,6 +72,12 @@ module CloudmersiveOcrApiClient
         end
       end
 
+      if attributes.has_key?(:'Diagnostics')
+        if (value = attributes[:'Diagnostics']).is_a?(Array)
+          self.diagnostics = value
+        end
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,7 +100,8 @@ module CloudmersiveOcrApiClient
       self.class == o.class &&
           successful == o.successful &&
           field_value_extraction_result == o.field_value_extraction_result &&
-          table_value_extraction_results == o.table_value_extraction_results
+          table_value_extraction_results == o.table_value_extraction_results &&
+          diagnostics == o.diagnostics
     end
 
     # @see the `==` method
@@ -101,7 +113,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, field_value_extraction_result, table_value_extraction_results].hash
+      [successful, field_value_extraction_result, table_value_extraction_results, diagnostics].hash
     end
 
     # Builds the object from hash
