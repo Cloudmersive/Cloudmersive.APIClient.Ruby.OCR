@@ -15,7 +15,7 @@ require 'date'
 module CloudmersiveOcrApiClient
   # Definition of a form field for OCR data extraction from images
   class FormFieldDefinition
-    # The identifier of the field; use this to identify which field is being referenced
+    # The identifier of the field; use this to identify which field is being referenced.  Set to SkipField if you do not wish to return the value of this field in the result.
     attr_accessor :field_id
 
     # Optional - the left-hand anchor of the field
@@ -23,6 +23,9 @@ module CloudmersiveOcrApiClient
 
     # Optional - the top anchor of the field
     attr_accessor :top_anchor
+
+    # Optional - the bottom anchor of the field
+    attr_accessor :bottom_anchor
 
     # Optional - the matching mode for the anchor.  Possible values are Complete (requires the entire anchor to match) and Partial (allows only part of the anchor to match) and Horizontal (anchor must be laid out horizontally).  Default is Partial.
     attr_accessor :anchor_mode
@@ -67,6 +70,7 @@ module CloudmersiveOcrApiClient
         :'field_id' => :'FieldID',
         :'left_anchor' => :'LeftAnchor',
         :'top_anchor' => :'TopAnchor',
+        :'bottom_anchor' => :'BottomAnchor',
         :'anchor_mode' => :'AnchorMode',
         :'data_type' => :'DataType',
         :'target_digit_count' => :'TargetDigitCount',
@@ -88,6 +92,7 @@ module CloudmersiveOcrApiClient
         :'field_id' => :'String',
         :'left_anchor' => :'String',
         :'top_anchor' => :'String',
+        :'bottom_anchor' => :'String',
         :'anchor_mode' => :'String',
         :'data_type' => :'String',
         :'target_digit_count' => :'Integer',
@@ -121,6 +126,10 @@ module CloudmersiveOcrApiClient
 
       if attributes.has_key?(:'TopAnchor')
         self.top_anchor = attributes[:'TopAnchor']
+      end
+
+      if attributes.has_key?(:'BottomAnchor')
+        self.bottom_anchor = attributes[:'BottomAnchor']
       end
 
       if attributes.has_key?(:'AnchorMode')
@@ -196,6 +205,7 @@ module CloudmersiveOcrApiClient
           field_id == o.field_id &&
           left_anchor == o.left_anchor &&
           top_anchor == o.top_anchor &&
+          bottom_anchor == o.bottom_anchor &&
           anchor_mode == o.anchor_mode &&
           data_type == o.data_type &&
           target_digit_count == o.target_digit_count &&
@@ -219,7 +229,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [field_id, left_anchor, top_anchor, anchor_mode, data_type, target_digit_count, minimum_character_count, allow_numeric_digits, vertical_alignment_type, horizontal_alignment_type, target_field_width_relative, target_field_height_relative, target_field_horizontal_adjustment, target_field_vertical_adjustment, ignore].hash
+      [field_id, left_anchor, top_anchor, bottom_anchor, anchor_mode, data_type, target_digit_count, minimum_character_count, allow_numeric_digits, vertical_alignment_type, horizontal_alignment_type, target_field_width_relative, target_field_height_relative, target_field_horizontal_adjustment, target_field_vertical_adjustment, ignore].hash
     end
 
     # Builds the object from hash

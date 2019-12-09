@@ -27,6 +27,9 @@ module CloudmersiveOcrApiClient
     # Diagnostic images - default is null, enable diagnostics=true to populate this parameter with one image per field
     attr_accessor :diagnostics
 
+    # Optional; populated when using photo/recognize/form/advanced with the Setting Name of the best-matching highest-relevance form
+    attr_accessor :best_match_form_setting_name
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -34,7 +37,8 @@ module CloudmersiveOcrApiClient
         :'successful' => :'Successful',
         :'field_value_extraction_result' => :'FieldValueExtractionResult',
         :'table_value_extraction_results' => :'TableValueExtractionResults',
-        :'diagnostics' => :'Diagnostics'
+        :'diagnostics' => :'Diagnostics',
+        :'best_match_form_setting_name' => :'BestMatchFormSettingName'
       }
     end
 
@@ -44,7 +48,8 @@ module CloudmersiveOcrApiClient
         :'successful' => :'BOOLEAN',
         :'field_value_extraction_result' => :'Array<FieldResult>',
         :'table_value_extraction_results' => :'Array<TableResult>',
-        :'diagnostics' => :'Array<String>'
+        :'diagnostics' => :'Array<String>',
+        :'best_match_form_setting_name' => :'String'
       }
     end
 
@@ -78,6 +83,10 @@ module CloudmersiveOcrApiClient
         end
       end
 
+      if attributes.has_key?(:'BestMatchFormSettingName')
+        self.best_match_form_setting_name = attributes[:'BestMatchFormSettingName']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -101,7 +110,8 @@ module CloudmersiveOcrApiClient
           successful == o.successful &&
           field_value_extraction_result == o.field_value_extraction_result &&
           table_value_extraction_results == o.table_value_extraction_results &&
-          diagnostics == o.diagnostics
+          diagnostics == o.diagnostics &&
+          best_match_form_setting_name == o.best_match_form_setting_name
     end
 
     # @see the `==` method
@@ -113,7 +123,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, field_value_extraction_result, table_value_extraction_results, diagnostics].hash
+      [successful, field_value_extraction_result, table_value_extraction_results, diagnostics, best_match_form_setting_name].hash
     end
 
     # Builds the object from hash
