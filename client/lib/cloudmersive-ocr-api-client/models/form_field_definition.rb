@@ -63,6 +63,9 @@ module CloudmersiveOcrApiClient
     # Optional - Ignore any result items that contain a partial or complete match with these text strings
     attr_accessor :ignore
 
+    # Optional - additional options that can be set for this field definition, separated by commas.  Possible values are AllowMultiMatch (allow the same anchor to be matched to multiple fields)
+    attr_accessor :options
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -82,7 +85,8 @@ module CloudmersiveOcrApiClient
         :'target_field_height_relative' => :'TargetFieldHeight_Relative',
         :'target_field_horizontal_adjustment' => :'TargetFieldHorizontalAdjustment',
         :'target_field_vertical_adjustment' => :'TargetFieldVerticalAdjustment',
-        :'ignore' => :'Ignore'
+        :'ignore' => :'Ignore',
+        :'options' => :'Options'
       }
     end
 
@@ -104,7 +108,8 @@ module CloudmersiveOcrApiClient
         :'target_field_height_relative' => :'Float',
         :'target_field_horizontal_adjustment' => :'Float',
         :'target_field_vertical_adjustment' => :'Float',
-        :'ignore' => :'Array<String>'
+        :'ignore' => :'Array<String>',
+        :'options' => :'String'
       }
     end
 
@@ -182,6 +187,10 @@ module CloudmersiveOcrApiClient
         end
       end
 
+      if attributes.has_key?(:'Options')
+        self.options = attributes[:'Options']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -217,7 +226,8 @@ module CloudmersiveOcrApiClient
           target_field_height_relative == o.target_field_height_relative &&
           target_field_horizontal_adjustment == o.target_field_horizontal_adjustment &&
           target_field_vertical_adjustment == o.target_field_vertical_adjustment &&
-          ignore == o.ignore
+          ignore == o.ignore &&
+          options == o.options
     end
 
     # @see the `==` method
@@ -229,7 +239,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [field_id, left_anchor, top_anchor, bottom_anchor, anchor_mode, data_type, target_digit_count, minimum_character_count, allow_numeric_digits, vertical_alignment_type, horizontal_alignment_type, target_field_width_relative, target_field_height_relative, target_field_horizontal_adjustment, target_field_vertical_adjustment, ignore].hash
+      [field_id, left_anchor, top_anchor, bottom_anchor, anchor_mode, data_type, target_digit_count, minimum_character_count, allow_numeric_digits, vertical_alignment_type, horizontal_alignment_type, target_field_width_relative, target_field_height_relative, target_field_horizontal_adjustment, target_field_vertical_adjustment, ignore, options].hash
     end
 
     # Builds the object from hash
