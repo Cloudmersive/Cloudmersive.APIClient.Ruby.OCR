@@ -11,5 +11,5 @@ Swagger Codegen version: 2.3.1
 =end
 
 module CloudmersiveOcrApiClient
-  VERSION = "1.4.8"
+  VERSION = "1.4.9"
 end
