@@ -27,6 +27,9 @@ module CloudmersiveOcrApiClient
     # Optional - the bottom anchor of the field
     attr_accessor :bottom_anchor
 
+    # Optional - alterate match text for the specified anchor
+    attr_accessor :alternate_anchor
+
     # Optional - the matching mode for the anchor.  Possible values are Complete (requires the entire anchor to match) and Partial (allows only part of the anchor to match) and Horizontal (anchor must be laid out horizontally).  Default is Partial.
     attr_accessor :anchor_mode
 
@@ -74,6 +77,7 @@ module CloudmersiveOcrApiClient
         :'left_anchor' => :'LeftAnchor',
         :'top_anchor' => :'TopAnchor',
         :'bottom_anchor' => :'BottomAnchor',
+        :'alternate_anchor' => :'AlternateAnchor',
         :'anchor_mode' => :'AnchorMode',
         :'data_type' => :'DataType',
         :'target_digit_count' => :'TargetDigitCount',
@@ -97,6 +101,7 @@ module CloudmersiveOcrApiClient
         :'left_anchor' => :'String',
         :'top_anchor' => :'String',
         :'bottom_anchor' => :'String',
+        :'alternate_anchor' => :'String',
         :'anchor_mode' => :'String',
         :'data_type' => :'String',
         :'target_digit_count' => :'Integer',
@@ -135,6 +140,10 @@ module CloudmersiveOcrApiClient
 
       if attributes.has_key?(:'BottomAnchor')
         self.bottom_anchor = attributes[:'BottomAnchor']
+      end
+
+      if attributes.has_key?(:'AlternateAnchor')
+        self.alternate_anchor = attributes[:'AlternateAnchor']
       end
 
       if attributes.has_key?(:'AnchorMode')
@@ -215,6 +224,7 @@ module CloudmersiveOcrApiClient
           left_anchor == o.left_anchor &&
           top_anchor == o.top_anchor &&
           bottom_anchor == o.bottom_anchor &&
+          alternate_anchor == o.alternate_anchor &&
           anchor_mode == o.anchor_mode &&
           data_type == o.data_type &&
           target_digit_count == o.target_digit_count &&
@@ -239,7 +249,7 @@ module CloudmersiveOcrApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [field_id, left_anchor, top_anchor, bottom_anchor, anchor_mode, data_type, target_digit_count, minimum_character_count, allow_numeric_digits, vertical_alignment_type, horizontal_alignment_type, target_field_width_relative, target_field_height_relative, target_field_horizontal_adjustment, target_field_vertical_adjustment, ignore, options].hash
+      [field_id, left_anchor, top_anchor, bottom_anchor, alternate_anchor, anchor_mode, data_type, target_digit_count, minimum_character_count, allow_numeric_digits, vertical_alignment_type, horizontal_alignment_type, target_field_width_relative, target_field_height_relative, target_field_horizontal_adjustment, target_field_vertical_adjustment, ignore, options].hash
     end
 
     # Builds the object from hash
