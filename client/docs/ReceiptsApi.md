@@ -28,7 +28,7 @@ end
 
 api_instance = CloudmersiveOcrApiClient::ReceiptsApi.new
 
-image_file = File.new("/path/to/file.txt") # File | Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+image_file = File.new('/path/to/file.txt') # File | Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
 
 
 begin
